@@ -3,17 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tickbox — Playful checklists, zero signup</title>
-  <meta name="description" content="Tickbox is a free, no-signup checklist tool. Make lists, check things off, watch the confetti fly. Everything saves in your browser." />
+  <title>Tickbox — Playful checklists by ToolWizHub</title>
+  <meta name="description" content="Tickbox is a free, no-signup checklist tool by ToolWizHub. Make lists, check things off, watch the confetti fly. Everything saves in your browser." />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Tickbox — Playful checklists, zero signup" />
+  <meta property="og:title" content="Tickbox — Playful checklists by ToolWizHub" />
   <meta property="og:description" content="Make lists, check things off, watch the confetti fly. Free, no account, saved in your browser." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://tickbox.toolwizhub.com" />
+  <meta property="og:image" content="https://tickbox.toolwizhub.com/assets/logo-full.webp" />
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✅</text></svg>" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/webp" href="assets/favicon.webp" />
+  <link rel="apple-touch-icon" href="assets/logo-icon.webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
   <!-- Confetti canvas overlays everything -->
@@ -23,8 +28,8 @@
     <!-- ░░░ Sidebar ░░░ -->
     <aside class="sidebar" id="sidebar">
       <header class="sidebar__head">
-        <a class="logo" href="./">
-          <span class="logo__mark">✅</span>
+        <a class="logo" href="./" aria-label="Tickbox home">
+          <img class="logo__img" src="assets/logo-icon.webp" alt="ToolWizHub" width="34" height="34" />
           <span class="logo__text">Tickbox</span>
         </a>
         <button class="icon-btn sidebar__close" id="sidebar-close" title="Close menu" aria-label="Close menu">✕</button>
@@ -39,6 +44,10 @@
       <div class="sidebar__foot">
         <button class="link-btn" id="templates-btn">✨ Start from a template</button>
         <p class="sidebar__note">Saved in this browser. No account, ever.</p>
+        <a class="brand-credit" href="https://toolwizhub.com" target="_blank" rel="noopener" title="More free tools at ToolWizHub">
+          <span class="brand-credit__label">Part of</span>
+          <img class="brand-credit__logo" src="assets/logo-horizontal.webp" alt="ToolWizHub" />
+        </a>
       </div>
     </aside>
 
@@ -90,6 +99,6 @@
   <!-- ░░░ Toast ░░░ -->
   <div class="toast" id="toast" hidden></div>
 
-  <script src="app.js"></script>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>

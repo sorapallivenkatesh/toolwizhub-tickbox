@@ -19,27 +19,48 @@ A static tool for **tickbox.toolwizhub.com**.
 - **Auto-saves** to `localStorage`; reload-safe
 - Fully **responsive** + respects `prefers-reduced-motion`
 
-## Files
+## Architecture
+
+Vanilla ES modules with clean layers — **no framework, no build step, no dependencies.**
 
 ```
 tickbox/
-├── index.html   # markup + meta/OG tags
-├── styles.css   # playful theme (no framework)
-├── app.js       # all logic — state, render, drag, share, export, confetti
-└── README.md
+├── index.html              # markup only
+├── css/styles.css          # playful theme (CSS custom properties)
+├── assets/                 # ToolWizHub brand — WebP only
+│   ├── favicon.webp  logo-icon.webp  logo-horizontal.webp  logo-full.webp
+└── js/
+    ├── main.js             # entry: wire events, own render(), inject actions
+    ├── config/
+    │   └── templates.js    # DATA only — emoji palette + starter templates
+    ├── core/               # PURE logic, no DOM — testable in Node
+    │   ├── model.js        #   factories, reorder, progress math
+    │   ├── store.js        #   state + localStorage
+    │   └── share.js        #   list ⇄ URL-hash encode/decode
+    └── ui/                 # DOM only
+        ├── dom.js  confetti.js  sidebar.js  board.js  modals.js
 ```
 
-No build step. No dependencies. Open `index.html` and it works.
+The `core/` layer is DOM-free, so the domain logic is unit-testable:
+
+```bash
+node --input-type=module -e '
+import { encodeList, decodeList } from "./js/core/share.js";
+import { newList } from "./js/core/model.js";
+const l = newList("Trip","✈️",["A","B"]);
+console.log(decodeList(encodeList(l)).name);  // → Trip
+'
+```
 
 ## Run locally
+
+ES modules need HTTP (not `file://`):
 
 ```bash
 cd tickbox
 python3 -m http.server 8080
 # → http://localhost:8080
 ```
-
-(Any static server works; you can also just open `index.html` directly, though the share-clipboard API prefers a real origin.)
 
 ## Deploy to Cloudflare Pages (tickbox.toolwizhub.com)
 
