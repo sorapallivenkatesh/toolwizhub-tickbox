@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tickbox — Playful checklists, zero signup</title>
+  <meta name="description" content="Tickbox is a free, no-signup checklist tool. Make lists, check things off, watch the confetti fly. Everything saves in your browser." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Tickbox — Playful checklists, zero signup" />
+  <meta property="og:description" content="Make lists, check things off, watch the confetti fly. Free, no account, saved in your browser." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tickbox.toolwizhub.com" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✅</text></svg>" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Confetti canvas overlays everything -->
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <div class="app" id="app">
+    <!-- ░░░ Sidebar ░░░ -->
+    <aside class="sidebar" id="sidebar">
+      <header class="sidebar__head">
+        <a class="logo" href="./">
+          <span class="logo__mark">✅</span>
+          <span class="logo__text">Tickbox</span>
+        </a>
+        <button class="icon-btn sidebar__close" id="sidebar-close" title="Close menu" aria-label="Close menu">✕</button>
+      </header>
+
+      <button class="btn btn--primary btn--block" id="add-list-btn">
+        <span class="btn__plus">＋</span> New list
+      </button>
+
+      <nav class="lists" id="lists" aria-label="Your lists"></nav>
+
+      <div class="sidebar__foot">
+        <button class="link-btn" id="templates-btn">✨ Start from a template</button>
+        <p class="sidebar__note">Saved in this browser. No account, ever.</p>
+      </div>
+    </aside>
+
+    <!-- ░░░ Main ░░░ -->
+    <main class="main" id="main">
+      <div class="topbar">
+        <button class="icon-btn topbar__menu" id="menu-btn" title="Lists" aria-label="Open lists">☰</button>
+        <div class="topbar__title" id="topbar-title">Tickbox</div>
+        <div class="topbar__actions" id="list-actions" hidden>
+          <button class="icon-btn" id="share-btn" title="Share this list" aria-label="Share list">🔗</button>
+          <button class="icon-btn" id="export-btn" title="Copy as Markdown" aria-label="Copy as Markdown">📋</button>
+          <button class="icon-btn" id="rename-btn" title="Rename list" aria-label="Rename list">✏️</button>
+          <button class="icon-btn icon-btn--danger" id="delete-list-btn" title="Delete list" aria-label="Delete list">🗑️</button>
+        </div>
+      </div>
+
+      <section class="board" id="board"><!-- list view or empty state injected here --></section>
+    </main>
+  </div>
+
+  <!-- ░░░ Template picker ░░░ -->
+  <div class="modal" id="template-modal" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__card" role="dialog" aria-modal="true" aria-label="Pick a template">
+      <header class="modal__head">
+        <h2>✨ Start from a template</h2>
+        <button class="icon-btn" data-close aria-label="Close">✕</button>
+      </header>
+      <div class="template-grid" id="template-grid"></div>
+    </div>
+  </div>
+
+  <!-- ░░░ Share dialog ░░░ -->
+  <div class="modal" id="share-modal" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__card modal__card--narrow" role="dialog" aria-modal="true" aria-label="Share this list">
+      <header class="modal__head">
+        <h2>🔗 Share this list</h2>
+        <button class="icon-btn" data-close aria-label="Close">✕</button>
+      </header>
+      <p class="modal__text">Anyone with this link gets their own copy. The whole list lives in the link — nothing is sent to a server.</p>
+      <div class="share-row">
+        <input type="text" id="share-url" class="input" readonly />
+        <button class="btn btn--primary" id="copy-share-btn">Copy</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ░░░ Toast ░░░ -->
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
