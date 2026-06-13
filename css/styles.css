@@ -103,7 +103,7 @@ input  { font-family: inherit; }
   font-weight: 700; color: #7e9aa5; white-space: nowrap;
 }
 
-.sidebar__close { display: none; }
+.sidebar__head .sidebar__close { display: none; }
 
 .lists {
   flex: 1;
@@ -189,10 +189,11 @@ input  { font-family: inherit; }
 }
 .topbar__menu { display: none; }
 .topbar__title {
+  display: none; /* redundant with the brand card on desktop; shown on mobile */
   flex: 1; font-size: 16px; font-weight: 800; color: var(--ink-soft);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-.topbar__actions { display: flex; gap: 4px; }
+.topbar__actions { display: flex; gap: 4px; margin-left: auto; }
 .topbar__actions[hidden] { display: none; }
 
 /* ── Board ────────────────────────────────────────── */
@@ -518,8 +519,9 @@ html.no-splash .splash { display: none; }
     box-shadow: var(--shadow-lg);
   }
   .app.sidebar-open .sidebar { transform: translateX(0); }
-  .sidebar__close { display: inline-flex; }
+  .sidebar__head .sidebar__close { display: inline-flex; }
   .topbar__menu { display: inline-flex; }
+  .topbar__title { display: block; }
   .scrim {
     position: fixed; inset: 0; background: rgba(43,36,64,0.4); z-index: 25;
     opacity: 0; pointer-events: none; transition: opacity 0.25s;
