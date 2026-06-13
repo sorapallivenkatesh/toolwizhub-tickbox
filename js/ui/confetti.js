@@ -3,7 +3,7 @@
 
 import { $ } from "./dom.js";
 
-const COLORS = ["#7c5cff", "#ff6fae", "#25c685", "#ffb648", "#5fb8ff", "#ff5d6c"];
+const COLORS = ["#0ea5a5", "#22d3ee", "#16b981", "#f59e0b", "#38bdf8", "#ff6b6b"];
 
 let canvas, ctx, pieces = [], rafId = null;
 
