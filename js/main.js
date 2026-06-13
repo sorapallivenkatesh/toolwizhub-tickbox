@@ -12,6 +12,7 @@ import { renderSidebar } from "./ui/sidebar.js";
 import { renderBoard } from "./ui/board.js";
 import { celebrate, prefersReducedMotion } from "./ui/confetti.js";
 import { initModals, openTemplates, openShare } from "./ui/modals.js";
+import { playSplash } from "./ui/splash.js";
 
 const now = () => Date.now();
 
@@ -191,3 +192,4 @@ load();
 initModals();
 checkIncomingShare();
 render();
+playSplash();

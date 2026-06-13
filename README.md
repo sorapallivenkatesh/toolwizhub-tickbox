@@ -17,6 +17,7 @@ A static tool for **tickbox.toolwizhub.com**.
 - **Share via link** — the whole list is encoded into the URL hash; the recipient gets their own copy (no server involved)
 - **Copy as Markdown** — paste straight into GitHub issues, Slack, notes
 - **Auto-saves** to `localStorage`; reload-safe
+- **Branded splash screen** on load (ToolWizHub logo, once per session, click-to-skip)
 - Fully **responsive** + respects `prefers-reduced-motion`
 
 ## Architecture
@@ -38,7 +39,7 @@ tickbox/
     │   ├── store.js        #   state + localStorage
     │   └── share.js        #   list ⇄ URL-hash encode/decode
     └── ui/                 # DOM only
-        ├── dom.js  confetti.js  sidebar.js  board.js  modals.js
+        ├── dom.js  confetti.js  sidebar.js  board.js  modals.js  splash.js
 ```
 
 The `core/` layer is DOM-free, so the domain logic is unit-testable:
